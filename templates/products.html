@@ -20,8 +20,10 @@
                         <li><a href="{{ url_for('products_page') }}">Products</a></li>
                         <li><a href="#">About</a></li>
                         <li><a href="{{ url_for('signup_page') }}">Account</a></li>
+                        <li><a href="{{ url_for('account_page') }}" id="account-link">Account</a></li>
                     </ul>
                 </nav>
+                <span id="username-display"></span>
                 <img src="{{ url_for('static', filename='images/cart.png') }}" alt="cart" width="30px" height="30px">
                 <img src="{{ url_for('static', filename='images/menu.png') }}" alt="menu" class="menu-icon" onclick="menutoggle()" width="30px" height="30px">
             </div>
@@ -203,6 +205,26 @@
         }
 
         fetchProducts();
+
+        // Check user session and display user info
+        document.addEventListener('DOMContentLoaded', function() {
+            const accessToken = localStorage.getItem('access_token');
+            if (accessToken) {
+                fetch('/api/protected', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${accessToken}`
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.logged_in_as) {
+                        document.getElementById('username-display').textContent = `Welcome, ${data.logged_in_as.username}`;
+                        document.querySelector(`nav ul li a[href="{{ url_for('signup_page') }}"]`).textContent = 'Account';
+                    }
+                });
+            }
+        });
     </script>
 </body>
 </html>

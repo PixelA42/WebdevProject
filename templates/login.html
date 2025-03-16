@@ -135,28 +135,28 @@
     </div>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            document.getElementById("loginForm").addEventListener("submit", async function(event) {
-                event.preventDefault();
-                
-                let username = document.getElementById("username").value;
-                let password = document.getElementById("password").value;
+    document.getElementById("loginForm").addEventListener("submit", async function(event) {
+        event.preventDefault();
         
-                let response = await fetch("/api/login", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ username, password })
-                });
-        
-                let data = await response.json();
-                if (response.ok) {
-                    alert("Login Successful!");
-                    localStorage.setItem("token", data.access_token);
-                    window.location.href = "{{ url_for('products_page') }}";
-                } else {
-                    alert("Invalid credentials");
-                }
-            });
+        let username = document.getElementById("username").value;
+        let password = document.getElementById("password").value;
+
+        let response = await fetch("/api/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username, password })
         });
+
+        let data = await response.json();
+        if (response.ok) {
+            alert("Login Successful!");
+            localStorage.setItem("access_token", data.access_token);
+            window.location.href = "{{ url_for('account_page') }}";
+        } else {
+            alert("Invalid credentials");
+        }
+    });
+});
     </script>
 </body>
 </html>

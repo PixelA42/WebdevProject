@@ -4,6 +4,7 @@ from flask_bcrypt import Bcrypt
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
 import os
 import secrets
+from datetime import timedelta
 
 secret_key = os.urandom(24)
 jwt_secret_key = secrets.token_hex(24)
@@ -13,6 +14,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///fashion.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = secret_key
 app.config['JWT_SECRET_KEY'] = jwt_secret_key
+app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(days=4)  
 
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
@@ -54,6 +56,11 @@ def products_page():
 def cart_page():
     return render_template('cart.html')
 
+@app.route('/account')
+@jwt_required()
+def account_page():
+    return render_template('account.html')
+
 @app.route('/api/register', methods=['POST'])
 def register():
     data = request.get_json()
@@ -93,9 +100,17 @@ def list_users():
     user_list = [{'id': user.id, 'username': user.username} for user in users]
     return jsonify(user_list), 200
 
+@app.route('/api/protected', methods=['GET'])
+@jwt_required()
+def protected():
+    current_user = get_jwt_identity()
+    return jsonify(logged_in_as=current_user), 200
+
 if __name__ == '__main__':
     with app.app_context():
         if not os.path.exists('fashion.db'):
             db.create_all()
             print("Database created!")
     app.run(host='127.0.0.1', port=8080, debug=True)
+
+    

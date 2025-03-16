@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <div class="navbar">
+                <div class="logo">
+                    <img src="{{ url_for('static', filename='images/AROHA.png') }}" alt="logo" width="125px" height="50px">
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="{{ url_for('home') }}">Home</a></li>
+                        <li><a href="{{ url_for('products_page') }}">Products</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="{{ url_for('account_page') }}" id="account-link">Account</a></li>
+                    </ul>
+                </nav>
+                <span id="username-display"></span>
+                <img src="{{ url_for('static', filename='images/cart.png') }}" alt="cart" width="30px" height="30px">
+                <img src="{{ url_for('static', filename='images/menu.png') }}" alt="menu" class="menu-icon" onclick="menutoggle()" width="30px" height="30px">
+            </div>
+        </div>
+    </div>
+
+    <div class="small-container">
+        <h2>Welcome, <span id="username"></span></h2>
+        <p>This is your account page.</p>
+        <button onclick="logout()">Logout</button>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2025 AROHA. All Rights Reserved.</p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const accessToken = localStorage.getItem('access_token');
+            if (accessToken) {
+                fetch('/api/protected', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${accessToken}`
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.logged_in_as) {
+                        document.getElementById('username').textContent = data.logged_in_as.username;
+                        document.getElementById('username-display').textContent = `Welcome, ${data.logged_in_as.username}`;
+                        document.getElementById('account-link').textContent = data.logged_in_as.username;
+                    }
+                });
+            }
+        });
+
+        function logout() {
+            localStorage.removeItem('access_token');
+            window.location.href = '/';
+        }
+    </script>
+</body>
+</html>
