@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All products | Aroha</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/fontawesome.min.css">
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <div class="navbar">
+                <div class="logo">
+                    <img src="{{ url_for('static', filename='images/AROHA.png') }}" alt="logo" width="125px" height="50px">
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="{{ url_for('home') }}">Home</a></li>
+                        <li><a href="{{ url_for('products_page') }}">Products</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="{{ url_for('signup_page') }}">Account</a></li>
+                    </ul>
+                </nav>
+                <img src="{{ url_for('static', filename='images/cart.png') }}" alt="cart" width="30px" height="30px">
+                <img src="{{ url_for('static', filename='images/menu.png') }}" alt="menu" class="menu-icon" onclick="menutoggle()" width="30px" height="30px">
+            </div>
+        </div>
+    </div>
+
+    <div class="small-container">
+        <div class="row row-2">
+            <h2 style="text-align: center;">ALL PRODUCTS</h2>
+            <select>
+                <option>Sort by price</option>
+                <option>Sort by popularity</option>
+                <option>Sort by rating</option>
+                <option>Sort by sale</option>
+            </select>
+        </div>
+        <div class="row">
+            <div class="col4">
+                <img src="{{ url_for('static', filename='images/phulakri.jpg') }}" alt="Phulkari">
+                <h4>Phulkari</h4>
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                </div>
+                <p>700 inr</p>
+            </div>
+            <div class="col4">
+                <img src="{{ url_for('static', filename='images/bandhej saree.jpg') }}" alt="bandhej saree">
+                <h4>Bandhej Saree</h4>
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                </div>
+                <p>700 inr</p>
+            </div>
+            <div class="col4">
+                <img src="{{ url_for('static', filename='images/linen kurta men.jpg') }}" alt="kurta">
+                <h4>Linen Kurta</h4>
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                </div>
+                <p>700 inr</p>
+            </div>
+            <div class="col4">
+                <img src="{{ url_for('static', filename='images/earrings punjab.jpg') }}" alt="earrings">
+                <h4>Earrings</h4>
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                </div>
+                <p>700 inr</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col4">
+                <img src="{{ url_for('static', filename='images/phulakri.jpg') }}" alt="Phulkari">
+                <h4>Phulkari</h4>
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                </div>
+                <p>700 inr</p>
+            </div>
+            <div class="col4">
+                <img src="{{ url_for('static', filename='images/bandhej saree.jpg') }}" alt="bandhej saree">
+                <h4>Bandhej Saree</h4>
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                </div>
+                <p>700 inr</p>
+            </div>
+            <div class="col4">
+                <img src="{{ url_for('static', filename='images/linen kurta men.jpg') }}" alt="kurta">
+                <h4>Linen Kurta</h4>
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                </div>
+                <p>700 inr</p>
+            </div>
+            <div class="col4">
+                <img src="{{ url_for('static', filename='images/earrings punjab.jpg') }}" alt="earrings">
+                <h4>Earrings</h4>
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                </div>
+                <p>700 inr</p>
+            </div>
+        </div>
+
+        <div class="page-btn">
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>&#8594;</span>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2025 AROHA. All Rights Reserved.</p>
+    </div>
+
+    <script>
+        var MenuItems = document.getElementById("MenuItems");
+
+        MenuItems.style.maxHeight = "0px";
+
+        function menutoggle() {
+            if (MenuItems.style.maxHeight == "0px") {
+                MenuItems.style.maxHeight = "200px";
+            } else {
+                MenuItems.style.maxHeight = "0px";
+            }
+        }
+
+        async function fetchProducts() {
+            let response = await fetch("/api/products");
+            let products = await response.json();
+            let productList = document.getElementById("product-list");
+
+            products.forEach(product => {
+                let item = document.createElement("div");
+                item.innerHTML = `
+                    <h3>${product.name}</h3>
+                    <p>Price: $${product.price}</p>
+                    <button onclick="addToCart(${product.id})">Add to Cart</button>
+                `;
+                productList.appendChild(item);
+            });
+        }
+
+        async function addToCart(productId) {
+            let token = localStorage.getItem("token");
+            if (!token) {
+                alert("Please log in first.");
+                return;
+            }
+
+            let response = await fetch("/api/cart", {
+                method: "POST",
+                headers: { 
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                },
+                body: JSON.stringify({ product_id: productId })
+            });
+
+            let data = await response.json();
+            alert(data.message);
+        }
+
+        fetchProducts();
+    </script>
+</body>
+</html>

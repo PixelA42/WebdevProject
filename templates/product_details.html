@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/fontawesome.min.css">
+</head>
+<body>
+
+    
+
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <img src="images/AROHA.png" alt="logo" width="125px" height = "50px">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index2.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="">About</a></li>
+                    <li><a href="signup.html">Account</a></li>
+                    
+                </ul>
+            </nav>
+            <img src="images/cart.png" alt="cart" width="30px" height="30px">
+            <img src="/images/menu.png" alt="menu" class="menu-icon"
+            onclick="menutoggle()">
+        </div>
+
+        
+        </div>
+
+        <!-- single prod details
+     -->
+
+     <div class="small-container single-prod">
+        <div class="row">
+            <div class="col-2">
+                <img src="/images/bandhej saree.jpg" alt="" width="100%" >
+            </div>
+
+            <div class="col-2">
+                <p>Home / Saree</p>
+                <h1> Bandhej saree from rajasthan</h1>
+                <h4> inr 4500</h4>
+                <select>
+                    <option>size</option>
+                    <option>Free</option>
+                </select>
+                <input type="number" value="1">
+                <a href="" class="btn">add to Cart</a>
+                <h3>product details <i class="fa fa-indent"></i></h3>
+                <br>
+                <p>handcrafetd by artisans, sourced by aroha</p>
+            </div>
+
+        </div>
+     </div>
+<!-- title -->
+<div class="small-container">
+    <div class="row row-2">
+        <h2>related products</h2>
+        <p> view more</p>
+    </div>
+</div>
+
+
+<!-- prod -->
+     <div class="small-container">
+        
+      <!-- products  -->
+        <div class="row">
+            <div class="col4">
+                <img src="/images/phulakri.jpg" alt="Phulkari">
+                <h4>Phulkari</h4>
+<!-- adding ratings -->
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                </div>
+
+                <p>700 inr</p>
+            </div>
+            <div class="col4">
+                <img src="/images/bandhej saree.jpg" alt="bandhej saree">
+                <h4>Phulkari</h4>
+<!-- adding ratings -->
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                </div>
+
+                <p>700 inr</p>
+            </div>
+            <div class="col4">
+                <img src="/images/linen kurta men.jpg" alt="kurta">
+                <h4>Phulkari</h4>
+<!-- adding ratings -->
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                </div>
+
+                <p>700 inr</p>
+            </div>
+            <div class="col4">
+                <img src="/images/earrings punjab.jpg" alt="Phulkari">
+                <h4>earrings</h4>
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                </div>
+
+                <p>700 inr</p>
+            </div>
+
+                
+        </div>
+
+        
+                
+        </div>
+
+
+     </div>
+
+
+
+ <div class="footer">
+    <p>&copy; 2025 AROHA. All Rights Reserved.</p>
+</div>
+
+ <!-- js for toggle menu -->
+  <script>
+    var MenuItems = document.getElementById(MenuItems);
+
+    MenuItems.style.maxHeight =  "0px";
+
+    function menutoggle(){
+        if (MenuItems.style.maxHeight == "0px")
+            {
+                MenuItems.style.maxHeight = "200px";
+            }
+        else{
+            MenuItems.style.maxHeight = "0px";
+        }
+    }
+  </script>
+
+  
+     
+</body>
+</html>

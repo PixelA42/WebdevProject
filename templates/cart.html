@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/fontawesome.min.css">
+</head>
+<body>
+
+    
+
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <img src="images/AROHA.png" alt="logo" width="125px" height = "50px">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index2.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="">About</a></li>
+                    <li><a href="signup.html">Account</a></li>
+                    
+                </ul>
+            </nav>
+            <img src="images/cart.png" alt="cart" width="30px" height="30px">
+            <img src="/images/menu.png" alt="menu" class="menu-icon"
+            onclick="menutoggle()">
+            
+        </div>
+
+        
+        </div>
+
+<div class="small-container cart-page">
+    <table>
+        <tr>
+            <th>Product</th>
+            <th>quantity</th>
+            <th>subtotal</th>
+        </tr>
+
+        <tr>
+            <td>
+                <div class="cartinfo">
+                    <img src="/images/phulakri.jpg" alt="">
+                    <div>
+                        <p>
+                            Phulkari
+                        </p>
+                        <small>inr 700</small>
+                        <br>
+                    </div>
+                </div>
+
+            </td>
+            <td>
+                quantity
+            </td>
+            <td><input type="number" value="1"></td>
+
+            <td>inr 5000</td>
+        </tr>
+
+        <tr>
+            <td>
+                <div class="cartinfo">
+                    <img src="/images/linen kurta men.jpg" alt="">
+                    <div>
+                        <p>
+                            kurta
+                        </p>
+                        <small>inr 700</small>
+                        <br>
+                    </div>
+                </div>
+
+            </td>
+            <td>
+                quantity
+            </td>
+            <td><input type="number" value="1"></td>
+
+            <td>inr 5000</td>
+        </tr>
+
+        <tr>
+            <td>
+                <div class="cartinfo">
+                    <img src="/images/bandhej saree.jpg" alt="">
+                    <div>
+                        <p>
+                            bandhej saree
+                        </p>
+                        <small>inr 700</small>
+                        <br>
+                    </div>
+                </div>
+
+            </td>
+            <td>
+                quantity
+            </td>
+            <td><input type="number" value="1"></td>
+
+            <td>inr 5000</td>
+        </tr>
+    </table>
+
+
+<div class="totalprice">
+    <table>
+        <tr>
+            <td>
+                subtotal
+            </td>
+            <td>inr x</td>
+        </tr>
+    
+        <tr>
+            <td>
+                tax
+            </td>
+            <td>
+                inr y
+            </td>
+
+            
+        </tr>
+
+        <tr>
+            <td>
+                total
+            </td>
+            <td>
+                inr x+y
+            </td>
+            
+        </tr>
+    
+    
+    </table>
+</div>
+
+
+
+</div>
+
+ 
+ <div class="footer">
+    <p>&copy; 2025 AROHA. All Rights Reserved.</p>
+</div>
+
+ <!-- js for toggle menu -->
+  <script>
+    var MenuItems = document.getElementById(MenuItems);
+
+    MenuItems.style.maxHeight =  "0px";
+
+    function menutoggle(){
+        if (MenuItems.style.maxHeight == "0px")
+            {
+                MenuItems.style.maxHeight = "200px";
+            }
+        else{
+            MenuItems.style.maxHeight = "0px";
+        }
+    }
+
+        async function fetchCart() {
+            let token = localStorage.getItem("token");
+            if (!token) {
+                alert("Please log in first.");
+                return;
+            }
+
+            let response = await fetch("/api/cart", {
+                method: "GET",
+                headers: { "Authorization": `Bearer ${token}` }
+            });
+
+            let cartItems = await response.json();
+            let cartList = document.getElementById("cart-list");
+            cartList.innerHTML = "";
+
+            if (cartItems.length === 0) {
+                cartList.innerHTML = "<p>Your cart is empty.</p>";
+                return;
+            }
+
+            cartItems.forEach(item => {
+                let cartItem = document.createElement("div");
+                cartItem.innerHTML = `
+                    <p>Product ID: ${item.product_id}</p>
+                    <p>Quantity: ${item.quantity}</p>
+                `;
+                cartList.appendChild(cartItem);
+            });
+        }
+
+        async function checkout() {
+            let token = localStorage.getItem("token");
+            if (!token) {
+                alert("Please log in first.");
+                return;
+            }
+
+            let response = await fetch("/api/checkout", {
+                method: "POST",
+                headers: { "Authorization": `Bearer ${token}` }
+            });
+
+            let data = await response.json();
+            alert(data.message);
+            fetchCart();
+        }
+
+        fetchCart();
+ 
+  </script>
+
+  
+     
+</body>
+</html>
