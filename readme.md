@@ -1,6 +1,6 @@
-# WebdevProject
+# Aroha
 
-WebdevProject is a second-semester web development project showcasing interactive and responsive web design concepts. This application demonstrates practical skills and creativity using modern technologies such as **Flask**, **HTML**, **CSS**, **JavaScript**, and **SQLAlchemy**.
+Aroha is a second-semester web development project showcasing interactive and responsive web design concepts. This application demonstrates practical skills and creativity using modern technologies such as **Flask**, **HTML**, **CSS**, **JavaScript**, and **SQLAlchemy**.
 
 ## Features
 - **Dynamic Web App**: Powered by Flask, offering routing and template rendering.
